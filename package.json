@@ -1,0 +1,15 @@
+{
+  "name": "nodestar",
+  "version": "1.0.0",
+  "description": "这是一个使用Node.js实现的后台管理项目",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/router": "^13.1.0",
+    "koa": "^2.15.3"
+  }
+}
