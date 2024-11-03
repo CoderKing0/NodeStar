@@ -6,7 +6,7 @@ const connectionPool = mysql.createPool({
   database: "nodestar",
   user: "root",
   password: "zd123456789",
-  connectionPoolLimit: 5,
+  connectionLimit: 5,
 });
 
 // 测试是否连接成功
