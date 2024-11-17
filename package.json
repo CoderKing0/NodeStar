@@ -4,13 +4,15 @@
   "description": "这是一个使用Node.js实现的后台管理项目",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./main.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@koa/router": "^13.1.0",
     "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
     "koa": "^2.15.3",
     "koa-bodyparser": "^4.4.1",
     "mysql2": "^3.11.3"
