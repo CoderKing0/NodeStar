@@ -35,8 +35,9 @@ class MomentController {
     };
   }
 
-  async verifyIsExist(ctx, next) {
-    const { momentId } = ctx.params;
+  async verifyMomentIsExist(ctx, next) {
+    const momentId = ctx?.params?.momentId || ctx.request.body?.momentId;
+
     const detailResult = await momentService.getDetailById(momentId);
     if (detailResult.length < 1) {
       return ctx.app.emit("error", -1101, ctx);

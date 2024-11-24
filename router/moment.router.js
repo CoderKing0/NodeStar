@@ -4,7 +4,7 @@ const {
   create,
   list,
   detail,
-  verifyIsExist,
+  verifyMomentIsExist,
   remove,
   update,
 } = require("../controller/moment.controller");
@@ -19,14 +19,14 @@ momentRouter.get("/:momentId", detail);
 momentRouter.delete(
   "/:momentId",
   verifyToken,
-  verifyIsExist,
+  verifyMomentIsExist,
   verifyPermission,
   remove
 );
 momentRouter.patch(
   "/:momentId",
   verifyToken,
-  verifyIsExist,
+  verifyMomentIsExist,
   verifyPermission,
   update
 );
