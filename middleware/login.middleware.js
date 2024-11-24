@@ -25,7 +25,7 @@ async function verifyLogin(ctx, next) {
   await next();
 }
 
-function verifyToken(ctx, next) {
+async function verifyToken(ctx, next) {
   try {
     const authorization = ctx.headers.authorization;
 
@@ -34,9 +34,10 @@ function verifyToken(ctx, next) {
     }
 
     const token = authorization.replace("Bearer ", "");
-    jwt.verify(token, PUBLIC_KEY);
+    const user = jwt.verify(token, PUBLIC_KEY);
+    ctx.user = user;
 
-    next()
+    await next();
   } catch (error) {
     return ctx.app.emit("error", -1006, ctx);
   }
@@ -44,5 +45,5 @@ function verifyToken(ctx, next) {
 
 module.exports = {
   verifyLogin,
-  verifyToken
+  verifyToken,
 };

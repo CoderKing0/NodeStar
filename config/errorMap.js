@@ -22,7 +22,15 @@ const errorMap = {
   "-1006": {
     code: -1006,
     message: "token错误或已过期~",
-  }
+  },
+  "-1101": {
+    code: -1101,
+    message: "动态不存在~",
+  },
+  "-2001": {
+    code: "-2001",
+    message: "权限不足，操作不被允许~",
+  },
 };
 
 module.exports = errorMap;
