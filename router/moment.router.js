@@ -14,7 +14,7 @@ const momentRouter = new KoaRouter({ prefix: "/moment" });
 
 momentRouter.post("/", verifyToken, create);
 momentRouter.get("/", list);
-momentRouter.get("/:momentId", detail);
+momentRouter.get("/:momentId", verifyIsExist, detail);
 // 删除和修改操作需要用户登录，并且只能自己操作自己发布的动态
 momentRouter.delete(
   "/:momentId",
