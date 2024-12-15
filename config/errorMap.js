@@ -27,6 +27,10 @@ const errorMap = {
     code: -1101,
     message: "动态不存在~",
   },
+  "-1201": {
+    code: -1201,
+    message: "标签已存在~",
+  },
   "-2001": {
     code: "-2001",
     message: "权限不足，操作不被允许~",
