@@ -47,6 +47,20 @@ class MomentService {
     const [result] = await connection.execute(statement, [content, momentId]);
     return result;
   }
+
+  async isExistRef(momentId, labelId) {
+    const statement =
+      "SELECT * FROM moment_label WHERE moment_id = ? AND label_id = ?;";
+    const [result] = await connection.execute(statement, [momentId, labelId]);
+    return result.length > 0;
+  }
+
+  async addRef(momentId, labelId) {
+    const statement =
+      "INSERT INTO moment_label (moment_id, label_id) VALUES (?, ?);";
+    const [result] = await connection.execute(statement, [momentId, labelId]);
+    return result;
+  }
 }
 
 module.exports = new MomentService();

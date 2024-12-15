@@ -11,10 +11,16 @@ class LabelService {
     const [result] = await connection.execute(statement);
     return result;
   }
+
+  async isLabelExist(label) {
+    const statement = "SELECT * FROM labels WHERE name = ?;";
+    const [result] = await connection.execute(statement, [label]);
+    return result.length > 0;
+  }
   async getLabelByName(name) {
     const statement = `SELECT * FROM labels WHERE name=?;`;
     const [result] = await connection.execute(statement, [name]);
-    return !!(result.length > 0);
+    return result;
   }
 }
 

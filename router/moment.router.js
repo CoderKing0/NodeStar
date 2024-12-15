@@ -7,6 +7,7 @@ const {
   verifyMomentIsExist,
   remove,
   update,
+  addLabels
 } = require("../controller/moment.controller");
 const { verifyPermission } = require("../middleware/permission.middleware");
 
@@ -30,5 +31,7 @@ momentRouter.patch(
   verifyPermission,
   update
 );
+// 为动态增加标签
+momentRouter.post('/:momentId/label', verifyToken, verifyMomentIsExist, verifyPermission, addLabels)
 
 module.exports = momentRouter;

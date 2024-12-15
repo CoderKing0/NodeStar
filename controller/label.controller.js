@@ -1,4 +1,4 @@
-const { create, list, getLabelByName } = require("../service/label.service");
+const { create, list, isLabelExist } = require("../service/label.service");
 
 class LabelController {
   async create(ctx, next) {
@@ -22,7 +22,7 @@ class LabelController {
   async verifyLabelIsExist(ctx, next) {
     const { name } = ctx.request.body;
 
-    const result = await getLabelByName(name);
+    const result = await isLabelExist(name);
 
     if (result) {
       return ctx.app.emit("error", -1201, ctx);
