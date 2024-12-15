@@ -21,10 +21,16 @@ class MomentService {
       SELECT 
         m.id id, m.content content, m.createAt createTime, m.updateAt updateTime,
         JSON_OBJECT('id', u.id, 'name', u.name, 'createTime', u.createAt, 'updateTime', u.updateAt) author,
-        (SELECT COUNT(*) FROM comment WHERE moment_id = m.id) commentCount
+        JSON_ARRAYAGG(JSON_OBJECT(
+          'id', c.id, 'content', c.content, 'commentId', c.comment_id,
+          'author', JSON_OBJECT('id', cu.id, 'name', cu.name)
+        )) comments
       FROM moment m
       LEFT JOIN user u ON m.user_id = u.id
-      WHERE m.id = ?;
+      LEFT JOIN comment c ON c.moment_id = m.id
+      LEFT JOIN user cu ON c.user_id = cu.id
+      WHERE m.id = ?
+      GROUP BY m.id;
     `;
     const [result] = await connection.execute(statement, [momentId]);
     return result;
